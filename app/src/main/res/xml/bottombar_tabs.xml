@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        icon="@mipmap/icon_home"
+        id="@+id/tab_home"
+        title="home" />
+    <tab
+        icon="@mipmap/icon_mv"
+        id="@+id/tab_mv"
+        title="mv" />
+    <tab
+        icon="@mipmap/icon_music"
+        id="@+id/tab_music"
+        title="music" />
+    <tab
+        icon="@mipmap/icon_other"
+        id="@+id/tab_other"
+        title="other" />
+
+</tabs>

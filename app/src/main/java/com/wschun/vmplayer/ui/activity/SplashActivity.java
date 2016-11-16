@@ -32,7 +32,11 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 //动画结束时调用
+
                 startActivity(new Intent(SplashActivity.this,MainActivity.class));
+                overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+                finish();
+
             }
 
             @Override
