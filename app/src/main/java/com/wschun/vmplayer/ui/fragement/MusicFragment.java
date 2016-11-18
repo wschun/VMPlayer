@@ -18,7 +18,7 @@ public class MusicFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        rootView = inflater.inflate(R.layout.fragment, container, false);
         return rootView;
     }
 

@@ -1,5 +1,6 @@
 package com.wschun.vmplayer.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.SwitchCompat;
 import android.support.v7.widget.Toolbar;
@@ -67,7 +68,7 @@ public class SettingActivity extends BaseActivity {
 
                 break;
             case R.id.rl_about:
-
+               startActivity(new Intent(SettingActivity.this,AboutActivity.class));
                 break;
         }
     }
