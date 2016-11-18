@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.wschun.vmplayer.http.HMCallBack;
+import com.wschun.vmplayer.http.HttpManager;
 import com.wschun.vmplayer.model.VideoBean;
 import com.wschun.vmplayer.presenter.BasePresenter;
 import com.wschun.vmplayer.ui.fragement.HomeFragment;
@@ -25,7 +27,7 @@ import okhttp3.Response;
 
 public class HomeFragmentPresenter extends BasePresenter {
 
-    private static final String TAG ="HomeFragmentPresenter" ;
+    private static final String TAG = "HomeFragmentPresenter";
     private HomeFragment homeFragment;
 
     public HomeFragmentPresenter(HomeFragment homeFragment) {
@@ -35,27 +37,16 @@ public class HomeFragmentPresenter extends BasePresenter {
 
     @Override
     public void getData() {
-        OkHttpClient okHttpClient = new OkHttpClient();
-        FormBody  form=new FormBody.Builder().build();
-        Request request = new Request.Builder().post(form).url(Constant.HOME).build();
-
-        okHttpClient.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    String json=response.body().string();
-                    List<VideoBean> List = new Gson().fromJson(json, new TypeToken<List<VideoBean>>() {
-                    }.getType());
-                }
-            }
-        });
-
-
-
+//        HttpManager.getInstance().get(Constant.HOME, new HMCallBack<Bean>() {
+//            @Override
+//            public void onFailure(Call call, Exception e) {
+//
+//            }
+//
+//            @Override
+//            public void onSuccess(Bean bean) {
+//                list
+//            }
+//        });
     }
 }
