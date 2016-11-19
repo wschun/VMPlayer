@@ -6,5 +6,5 @@ package com.wschun.vmplayer.presenter;
 
 public abstract class BasePresenter {
 
-    public abstract void getData();
+
 }

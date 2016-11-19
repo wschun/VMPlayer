@@ -35,18 +35,23 @@ public class HomeFragmentPresenter extends BasePresenter {
     }
 
 
-    @Override
-    public void getData() {
-//        HttpManager.getInstance().get(Constant.HOME, new HMCallBack<Bean>() {
-//            @Override
-//            public void onFailure(Call call, Exception e) {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(Bean bean) {
-//                list
-//            }
-//        });
+    public void getData(int offset, int size) {
+        HttpManager httpManager = HttpManager.getInstance().
+                addParam("offset", offset + "").
+                addParam("size", size + "");
+
+        httpManager.get(Constant.HOME, new HMCallBack<List<VideoBean>>() {
+            @Override
+            public void onFailure(Call call, Exception e) {
+
+            }
+
+            @Override
+            public void onSuccess(List<VideoBean> videoBeen) {
+                homeFragment.setData(videoBeen);
+            }
+        });
     }
+
+
 }

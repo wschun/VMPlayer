@@ -11,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
 import com.wschun.vmplayer.R;
 import com.wschun.vmplayer.ui.fragement.HomeFragment;
@@ -63,26 +64,29 @@ public class MainActivity extends BaseActivity {
                 Fragment fragment = fragments.get(tabId);
                 switchContentUi(fragment);
             }
+
         });
     }
 
+    private Fragment mFragment;
     private void switchContentUi(Fragment fragment) {
         if (fragment==null)
             return;
-
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-
-        if (fragment.isAdded()){
-            if (fragment.isVisible()){
-                //说明用户再次点击了
-            }else {
-                transaction.show(fragment);
-            }
-        }else {
-            transaction.replace(R.id.fl_content,fragment);
+        if (mFragment==null){
+            mFragment=fragment;
         }
-
-       transaction.commit();
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction();
+        if (mFragment!=fragment){
+            if (!fragment.isAdded()) { // 先判断是否被add过
+                transaction.hide(mFragment).add(R.id.fl_content, fragment).commit(); // 隐藏当前的fragment，add下一个到Activity中
+            } else {
+                transaction.hide(mFragment).show(fragment).commit(); // 隐藏当前的fragment，显示下一个
+            }
+            mFragment=fragment;
+        }else {
+            transaction.add(R.id.fl_content, fragment).commit();
+        }
     }
 
     @OnClick(R.id.iv_setting)
