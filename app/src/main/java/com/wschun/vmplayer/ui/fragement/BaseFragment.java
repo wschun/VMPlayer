@@ -7,6 +7,7 @@ import android.text.BoringLayout;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.wschun.vmplayer.presenter.fragement.HomeFragmentPresenter;
 
 import butterknife.Unbinder;
@@ -25,6 +26,7 @@ public class BaseFragment extends Fragment {
     protected boolean isFresh=false;
     protected int lastVisibleItemPosition;
     protected boolean hasMore=true;
+    private MaterialDialog dialog;
 
     protected void observ(int width,int height){
 
@@ -40,5 +42,19 @@ public class BaseFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         if (bind != null)
             bind.unbind();
+    }
+
+
+    public void showDialog(){
+        MaterialDialog.Builder builder=new MaterialDialog.Builder(getActivity());
+        builder.cancelable(false);
+        builder.title("正在加载中。。。");
+        builder.progress(true,0);
+        dialog = builder.build();
+        dialog.show();
+    }
+
+    public void dismiss(){
+        dialog.dismiss();
     }
 }

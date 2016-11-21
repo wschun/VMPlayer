@@ -43,7 +43,7 @@ public class HomeFragmentPresenter extends BasePresenter {
         httpManager.get(Constant.HOME, new HMCallBack<List<VideoBean>>() {
             @Override
             public void onFailure(Call call, Exception e) {
-
+                 homeFragment.showError();
             }
 
             @Override

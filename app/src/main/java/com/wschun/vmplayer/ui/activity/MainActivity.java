@@ -3,6 +3,7 @@ package com.wschun.vmplayer.ui.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,8 @@ import android.util.SparseArray;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabReselectListener;
 import com.roughike.bottombar.OnTabSelectListener;
@@ -46,6 +49,33 @@ public class MainActivity extends BaseActivity {
         init();
 
         setListener();
+
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        final MaterialDialog.Builder builder = new MaterialDialog.Builder(this);
+        builder.title("退出提示？");
+        builder.content("亲，确定要离开吗");
+        builder.cancelable(false);
+        builder.negativeText("点错了");
+        builder.positiveText("确定");
+
+        builder.onNegative(new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                 dialog.dismiss();
+            }
+        });
+        builder.onPositive(new MaterialDialog.SingleButtonCallback() {
+            @Override
+            public void onClick(@NonNull MaterialDialog dialog, @NonNull DialogAction which) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        builder.show();
 
     }
 

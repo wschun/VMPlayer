@@ -63,6 +63,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onRefresh() {
                 isFresh=true;
+                showDialog();
                 homeFragmentPresenter.getData(0,SIZE);
             }
         });
@@ -72,6 +73,7 @@ public class HomeFragment extends BaseFragment {
                 super.onScrollStateChanged(recyclerView, newState);
                 if ((lastVisibleItemPosition+1)==homeRecylerAdapter.getItemCount() && hasMore){
                     srlFresh.setRefreshing(true);
+                    showDialog();
                     homeFragmentPresenter.getData(offset,SIZE);
                 }
             }
@@ -90,6 +92,7 @@ public class HomeFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         DaggerHomeFragmentComponent.builder().homeFragmentModule(new HomeFragmentModule(this))
                 .build().in(this);
+        showDialog();
         homeFragmentPresenter.getData(offset,SIZE);
     }
 
@@ -107,5 +110,12 @@ public class HomeFragment extends BaseFragment {
         videoBeanlist.addAll(datas);
         homeRecylerAdapter.notifyDataSetChanged();
         srlFresh.setRefreshing(false);
+        dismiss();
+    }
+
+
+    public void showError() {
+        srlFresh.setRefreshing(false);
+        dismiss();
     }
 }
