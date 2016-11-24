@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.wschun.vmplayer">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,8 +22,13 @@
         </activity>
         <activity
             android:name=".ui.activity.SettingActivity"
-            android:theme="@style/CustomTheme"></activity>
-        <activity android:name=".ui.activity.AboutActivity"></activity>
+            android:theme="@style/CustomTheme" />
+        <activity android:name=".ui.activity.AboutActivity" />
+        <activity android:name=".ui.activity.MeiNvDetialActivity"
+            android:theme="@style/ImgDetialTheme"
+            >
+
+        </activity>
     </application>
 
 </manifest>

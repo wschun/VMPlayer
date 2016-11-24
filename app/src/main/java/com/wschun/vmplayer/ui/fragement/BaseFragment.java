@@ -20,20 +20,20 @@ public class BaseFragment extends Fragment {
 
     protected View rootView;
     protected Unbinder bind;
-    protected int offset=0;
-    protected final int SIZE=10;
-    protected int mWidth,mHeight;
-    protected boolean isFresh=false;
+    protected int offset = 0;
+    protected final int SIZE = 10;
+    protected int mWidth, mHeight;
+    protected boolean isFresh = false;
     protected int lastVisibleItemPosition;
-    protected boolean hasMore=true;
+    protected boolean hasMore = true;
     private MaterialDialog dialog;
 
-    protected void observ(int width,int height){
+    protected void observ(int width, int height) {
 
-        DisplayMetrics metrics=new DisplayMetrics();
+        DisplayMetrics metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        mWidth=metrics.widthPixels;
-        mHeight=(mWidth*height)/width;
+        mWidth = metrics.widthPixels;
+        mHeight = (mWidth * height) / width;
     }
 
 
@@ -45,16 +45,18 @@ public class BaseFragment extends Fragment {
     }
 
 
-    public void showDialog(){
-        MaterialDialog.Builder builder=new MaterialDialog.Builder(getActivity());
-        builder.cancelable(false);
+    public void showDialog() {
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(getActivity());
+        builder.cancelable(true);
         builder.title("正在加载中。。。");
-        builder.progress(true,0);
+        builder.progress(true, 0);
         dialog = builder.build();
         dialog.show();
     }
 
     public void dismiss(){
-        dialog.dismiss();
+        if (dialog != null)
+            dialog.dismiss();
     }
+
 }

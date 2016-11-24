@@ -105,6 +105,8 @@ public class HttpManager {
         return builder.build();
     }
 
+
+
     enum RequestType {
         GET,
         POST

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import com.wschun.vmplayer.R;
 import com.wschun.vmplayer.dagger.component.fragement.DaggerMvFragmentComponent;
 import com.wschun.vmplayer.dagger.module.fragement.MvFramgentModule;
-import com.wschun.vmplayer.dagger.module.fragement.MvItemFragment;
 import com.wschun.vmplayer.model.AreaBean;
 import com.wschun.vmplayer.presenter.fragement.MvFragmentPresenter;
 import com.wschun.vmplayer.ui.adapter.MvFragmentAdapter;
@@ -50,6 +49,7 @@ public class MvFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         DaggerMvFragmentComponent.builder().mvFramgentModule(new MvFramgentModule(this)).build().in(this);
+        showDialog();
         mvFragmentPresenter.getData();
     }
 
@@ -61,5 +61,6 @@ public class MvFragment extends BaseFragment {
         }
         vpPage.setAdapter(new MvFragmentAdapter(getFragmentManager(), mvFragments,data));
         tlLayout.setupWithViewPager(vpPage);
+        dismiss();
     }
 }
