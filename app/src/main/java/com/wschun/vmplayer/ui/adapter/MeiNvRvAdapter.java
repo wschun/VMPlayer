@@ -76,8 +76,8 @@ public class MeiNvRvAdapter extends RecyclerView.Adapter<MeiNvRvAdapter.ImgViewH
             Intent intent = new Intent(context, MeiNvDetialActivity.class);
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((MainActivity)context, view, "test");
-            intent.putExtra("url",itemsBean.getPic_url());
-            context.startActivity(intent, options.toBundle());
+            intent.putExtra("url",itemsBean.getSmallThumbUrl());
+            context.startActivity(intent );
         }
 
     }

@@ -12,12 +12,23 @@ public class VideoBean implements Serializable {
     private String posterPic;
     private String title;
     private String type;
+    private String url;
+    private int id;
 
-    public VideoBean(String type, String title, String posterPic, String description) {
-        this.type = type;
-        this.title = title;
-        this.posterPic = posterPic;
-        this.description = description;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public String getDescription() {

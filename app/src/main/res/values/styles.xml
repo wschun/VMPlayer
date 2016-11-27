@@ -29,15 +29,7 @@
     </style>
 
 
-    <style name="ImgDetialTheme" parent="Theme.AppCompat">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/blue_dark</item>
-        <item name="colorAccent">@color/green</item>
 
-        <!-- enable window content transitions -->
-        <item name="android:windowActivityTransitions" tools:targetApi="lollipop">true</item>
-    </style>
 
 
 </resources>

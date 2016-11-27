@@ -76,9 +76,14 @@ public class HttpManager {
         builder.url(url);
         return builder.build();
     }
+    private String url;
+    public String getURl(){
+        return url;
+    }
 
     private String getParamWithString(String url) {
         if (params==null || params.size()<1){
+            this.url=url;
             return url;
         }
         if (url.indexOf("http://")==0 || url.indexOf("https://")==0){
@@ -88,6 +93,7 @@ public class HttpManager {
                 sb.append(entry.getKey()).append("=").append(entry.getValue()).append("&");
             }
             Log.i("HttpManager", "getParamWithString: "+sb.toString());
+            this.url=sb.toString().substring(0,sb.toString().length()-1);
             return sb.toString().substring(0,sb.toString().length()-1);
         }else {
             throw new RuntimeException("url error");
